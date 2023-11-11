@@ -23,15 +23,15 @@ const Layout = ({ children } : Readonly<{children: React.ReactNode}>) => {
               
               <Divider w="150px" color={"gray.700"} orientation="horizontal"/>
               
-              <Link textColor="gray.500" display={"flex"} my={5} href="/dashboard">
+              <Link textColor="gray.500" display={"flex"} my={5} href="/">
                 <Image src={MeterIcon} width={25} height={20} alt="meter icon" />
                 <Text ml={"3"}>Home</Text>
             </Link>
-              <Link display={"flex"} textColor="gray.500" href="/settings">
+              <Link display={"flex"} textColor="gray.500" href="/patients">
                   <Image src={PersonIcon} width={25} height={20} alt="Person icon" />
                   <Text ml={"3"}>Patients</Text>
               </Link>
-              <Link display={"flex"}textColor="gray.500" my={5} href="/dashboard">
+              <Link display={"flex"}textColor="gray.500" my={5} href="/appointments">
                   <Image src={CalendarIcon} width={25} height={20} alt="appointment icon" />
                 <Text ml={"3"}>Appointments</Text>
               </Link>
@@ -50,7 +50,7 @@ const Layout = ({ children } : Readonly<{children: React.ReactNode}>) => {
 
           <Box flex="1" p={5}>
               <HStack mb={6} as="nav" justify={"space-between"}>
-                  <Text fontWeight="bold">Dashoard</Text>
+                  <Text fontWeight="bold">Dashboard</Text>
                   
                   <Text fontWeight="bold" textColor={"gray.600"}>{new Date().toDateString()}</Text>
             </HStack>
@@ -58,7 +58,7 @@ const Layout = ({ children } : Readonly<{children: React.ReactNode}>) => {
           </Box>
           <VStack w="300px" align="start" h="100vh" p={5} bg={useColorModeValue('gray.100', 'gray.700')}>
                 <Text fontWeight="bold">Profile</Text>
-              {/* You can add more content here for the right sidebar */}
+
               
               <Profile doctorProfile={doctorProfile}/>
             </VStack>
