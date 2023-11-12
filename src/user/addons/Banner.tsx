@@ -7,8 +7,8 @@ const Banner = () => {
 
   return (
     <HStack position="relative" textAlign="center" bg="#5C7CFA" height={isLargerThan768 ? '300px' : '200px'} overflow="hidden">
-      <Image src={imgUrl} alt="Doctor"  />
-      <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" color="white">
+      {/* <Image src={imgUrl} alt="Doctor"  /> */}
+      <Box  color="white">
         <Text fontSize={isLargerThan768 ? '2xl' : 'xl'} fontWeight="bold" bg="rgba(0, 0, 0, 0.5)" p={3}>
           Book an Appointment Today!
         </Text>
