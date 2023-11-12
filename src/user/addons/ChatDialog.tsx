@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, IconButton, Textarea, Box, Icon, Text, VStack } from '@chakra-ui/react';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, IconButton, Textarea, Box, Text, VStack } from '@chakra-ui/react';
 import { ArrowRightIcon, ArrowBackIcon } from "@chakra-ui/icons";
 import { motion } from 'framer-motion';
 

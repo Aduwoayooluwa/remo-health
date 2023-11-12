@@ -4,6 +4,41 @@
   }
 }
 
+.user-app {
+  scroll-behavior: smooth;
+}
+
+/* For the entire page */
+.user-index {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #5C7CFA orange; /* For Firefox: thumb and track color */
+}
+
+/* For Webkit (Chrome, Safari, etc.) */
+.user-index::-webkit-scrollbar {
+  width: 4px; 
+}
+
+html {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #5C7CFA orange; /* For Firefox: thumb and track color */
+}
+
+/* For Webkit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 4px; 
+}
+
+::-webkit-scrollbar-track {
+  background: orange; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: blue; /* Thumb color */
+  border-radius: 20px;
+}
+
+
 /* calendar date picker */
 
 .react-datepicker {

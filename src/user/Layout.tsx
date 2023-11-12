@@ -1,7 +1,8 @@
-import { Avatar, Box, HStack, Input, Stack, Text } from '@chakra-ui/react'
+import { Avatar, Box, Center, HStack, Input, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import { BellIcon } from "@chakra-ui/icons";
 import { DoctorCategories } from './addons/Doctors';
+import HamburgerMenu from './layout/Sidebar';
 
 type Props = {
     children: React.ReactNode
@@ -9,11 +10,15 @@ type Props = {
 
 const Layout = ({children }: Readonly<Props>) => {
   return (
-      <Stack bg="gray.50">
+      <Stack className='user-app' bg="gray.50">
           <Box p={6} bg={"#5C7CFA"} w="full" textColor="white" h={"150px"}>
               <HStack justify={"space-between"} w="full"> 
                   <HStack>
-                    <Avatar name={"Ayo Aduwo"} size={"sm"} />
+                      <HStack>
+                          <HamburgerMenu />
+                          <Avatar ml={3} name={"Ayo Aduwo"} size={"sm"} />
+                      </HStack> 
+                    
                     
                     <Box>
                         <Text>Welcome back,</Text>
@@ -27,14 +32,16 @@ const Layout = ({children }: Readonly<Props>) => {
               </HStack>
               
 
-              <Input bg="white" textColor={"black"} my={5}  borderRadius={"50px"} placeholder='search for doctors'/>
+              <Input w={{base: "full", md: "full"}} bg="white" textColor={"black"} my={5}  borderRadius={{base:"50px", md:"none"}} placeholder='search for doctors'/>
           </Box>
-          <Stack bg="#F5F7F8">
+          <Center>
+              <Box w={{base:"full", md: "90%"}}  bg="#F5F7F8">
               <HStack pr={6}>
                   <DoctorCategories />
                 </HStack>
                 { children }   
-          </Stack>
+          </Box>
+          </Center>
     </Stack>
   )
 }

@@ -1,4 +1,4 @@
-// Profile.tsx
+"use client"
 import React from 'react';
 import { Box, VStack, Avatar, Text, Badge, Stack, Icon, HStack, Button, AlertIcon, Alert, AlertDescription } from '@chakra-ui/react';
 import CalendarComponent from './addons/Calendar';
