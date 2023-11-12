@@ -26,7 +26,7 @@ html {
 
 /* For Webkit (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
-  width: 4px; 
+  width: 15px; 
 }
 
 ::-webkit-scrollbar-track {
@@ -38,7 +38,16 @@ html {
   border-radius: 20px;
 }
 
+@media (max-width: 768px) {
+  html {
+    scrollbar-width: auto; /* Reset for Firefox */
+    scrollbar-color: auto; /* Reset for Firefox */
+  }
 
+  ::-webkit-scrollbar {
+    width: auto; /* Reset for Webkit browsers */
+  }
+}
 /* calendar date picker */
 
 .react-datepicker {
