@@ -18,7 +18,7 @@ export interface DoctorSettings {
 const MotionBox = motion(Box);
 
 const SettingsPage: React.FC = () => {
-  const [settings, setSettings] = useState<DoctorSettings>({});
+  const [settings, setSettings] = useState<DoctorSettings>();
   const toast = useToast();
 
   const handleSave = () => {
