@@ -3,6 +3,7 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navigationLinks } from '@/utils/nav';
 import { Link } from '@chakra-ui/next-js';
+import { useAuth } from '@/helper';
 
 const MotionBox = motion(Box);
 
@@ -13,6 +14,8 @@ const HamburgerMenu = () => {
     open: { x: 0 },
     closed: { x: '-100%' },
   };
+
+  const { signOut } = useAuth();
 
   return (
     <>
@@ -52,7 +55,7 @@ const HamburgerMenu = () => {
                         )
                     })
                           }
-                <Button my={3} colorScheme='blue'>Logout</Button>
+                <Button my={3} onClick={signOut} colorScheme='blue'>Logout</Button>
             </VStack>
           </MotionBox>
         )}

@@ -8,6 +8,7 @@ import ChatModal from './ChatDialog';
 import BookAppointment from './BookAppointment';
 import DoctorProfile from './DocProfile';
 import { doctorProfile } from '@/app/profile/page';
+import { useGetDoctors } from '@/helper/users';
 
 
 export interface Doctor {
@@ -19,28 +20,24 @@ export interface Doctor {
     
 }
 
-export const doctors: Doctor[] = [
-  { id: 1, name: 'Dr. Emily Smith', imageUrl: 'path-to-image', rating: 4.5, specialty: 'Dermatologist' },
-  { id: 2, name: 'Dr. John Doe', imageUrl: 'path-to-image', rating: 4.2, specialty: 'Cardiologist' },
-  { id: 3, name: 'Dr. Sarah Johnson', imageUrl: 'path-to-image', rating: 4.3, specialty: 'Neurologist' },
-  { id: 4, name: 'Dr. Michael Brown', imageUrl: 'path-to-image', rating: 4.7, specialty: 'Pediatrician' },
-  { id: 5, name: 'Dr. Linda Garcia', imageUrl: 'path-to-image', rating: 4.6, specialty: 'Ophthalmologist' },
-  { id: 6, name: 'Dr. William Martinez', imageUrl: 'path-to-image', rating: 4.4, specialty: 'Orthopedic Surgeon' },
-  { id: 7, name: 'Dr. Elizabeth Davis', imageUrl: 'path-to-image', rating: 4.5, specialty: 'Gynecologist' },
-  { id: 8, name: 'Dr. Richard Rodriguez', imageUrl: 'path-to-image', rating: 4.3, specialty: 'Psychiatrist' }
-];
-
-
 const DoctorList: React.FC = () => {
-    const { onOpen, isOpen, onClose } = useDisclosure();
+  const { onOpen, isOpen, onClose } = useDisclosure();
+  const { doctors } = useGetDoctors();
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+
+  const handleDoctorClick = (doctor) => {
+    setSelectedDoctor(doctor);
+    onOpen();
+  };
+
   return (
     <List  spacing={3}>
-      {doctors.slice(3, 7).map((doctor: Doctor) => (
+      {doctors.map((doctor: any) => (
         <ListItem bg="white" key={doctor.id}  p={{base: 3, md: 5, lg: 8}}  shadow="md" borderWidth="1px" borderRadius="md">
               <Box display="flex" alignItems="start">
-             <Avatar size={{base:"md", md:"md", lg:"lg"}} name={doctor.name} onClick={onOpen} src={doctor.imageUrl} mr={3} />            
+             <Avatar size={{base:"md", md:"md", lg:"lg"}} name={`${doctor.first_name} ${doctor.last_name}`} onClick={() => handleDoctorClick(doctor)} src={doctor.imageUrl} mr={3} />            
             <Box as="a">
-              <Text fontWeight="bold" fontSize={{base:"lg", md:"xl", lg:"2xl"}}>{doctor.name}</Text>
+              <Text fontWeight="bold" fontSize={{base:"lg", md:"xl", lg:"2xl"}}>{`${doctor.first_name} ${doctor.last_name}`}</Text>
               <Text fontSize={{base:"sm", md:"md"}}>{doctor.specialty}</Text>
               
               <HStack mt={2} >
@@ -55,7 +52,10 @@ const DoctorList: React.FC = () => {
               
               </Box>
               
-              {isOpen && (<DoctorProfile doctor={doctorProfile} onClose={onClose} isOpen={isOpen} onOpen={onOpen} />)}
+           {isOpen && selectedDoctor?.id === doctor.id && (
+            <DoctorProfile doctor={selectedDoctor} onClose={() => { onClose(); setSelectedDoctor(null); }} isOpen={isOpen} />
+          )}
+          
         </ListItem>
       ))}
           
@@ -65,13 +65,14 @@ const DoctorList: React.FC = () => {
 };
 
 export const DoctorRec = () => {
+  const { doctors } = useGetDoctors();
   return (
-    <List>
-      <HStack overflowX="auto" whiteSpace="nowrap" spacing={4}>
+    <List >
+      <HStack className="user-index" overflowX="auto" whiteSpace="nowrap" spacing={4}>
         {doctors.slice(0, 3).map(doctor => (
           <Box key={doctor.id} p={4} bg="white" shadow="md" borderWidth="1px" borderRadius="md" minW="200px">
-            <Avatar size="xl" name={doctor.name} src={doctor.imageUrl} mb={3} alignSelf="center" />
-            <Text fontSize="xl" fontWeight="bold" textAlign="center">{doctor.name}</Text>
+            <Avatar size="xl" name={`${doctor.first_name} ${doctor.last_name}`} src={doctor.imageUrl} mb={3} alignSelf="center" />
+            <Text fontSize="xl" fontWeight="bold" textAlign="center">{`${doctor.first_name} ${doctor.last_name}`}</Text>
             <Text fontSize="md" color="gray.600" textAlign="center">{doctor.specialty}</Text>
             <Box mt={2} display="flex" justifyContent="center" alignItems="center">
               {Array(5).fill('').map((_, i) => (

@@ -2,24 +2,27 @@
 import React from 'react';
 import {
   Box, VStack, HStack, Avatar, Text, Button, Divider, Badge,
-  IconButton, useMediaQuery, SimpleGrid, Heading, Stack
+  IconButton, useMediaQuery, SimpleGrid, Heading, Stack, Center
 } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
 import { AppointmentHistory, HealthInformation, MessagesNotifications } from './addons/ProfileComponents';
 import HamburgerMenu from './layout/Sidebar';
+import useUserStore from '@/lib/store';
 
 const UserProfilePage = () => {
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
 
   // This would be replaced with actual user data
-  const user = {
-    name: 'John Doe',
-    age: 30,
-    imageUrl: 'path-to-image',
-    bio: 'Lorem ipsum dolor sit amet...',
-    appointments: [/* ... */],
-    messages: [/* ... */]
-  };
+  // const user = {
+  //   name: 'John Doe',
+  //   age: 30,
+  //   imageUrl: 'path-to-image',
+  //   bio: 'Lorem ipsum dolor sit amet...',
+  //   appointments: [/* ... */],
+  //   messages: [/* ... */]
+  // };
+
+  const user = useUserStore((state) => state.user)
 
   return (
       <Box  pb={5}>
@@ -27,15 +30,16 @@ const UserProfilePage = () => {
               <HamburgerMenu />
               <Text textColor="white" fontWeight={"bold"} fontSize="xl">Your Profile</Text>
         </HStack>
-          <VStack px={5} spacing={4} mt={3}  align="stretch">
+      <Center>
+                  <VStack px={5} spacing={4} mt={3}  align="stretch">
 
         {/* User Information */}
         <HStack spacing={4}>
-          <Avatar size="xl" name={user.name} src={user.imageUrl} />
+          <Avatar size="xl" name={user.first_name + " " + user.last_name} src={user.imageUrl} />
           <VStack align="start">
-            <Text fontWeight="bold" fontSize="xl">{user.name}</Text>
-            <Text fontSize="sm">Age: {user.age}</Text>
-            <Text fontSize="sm">Bio: {user.bio}</Text>
+            <Text fontWeight="bold" fontSize="xl">{user.first_name + " " + user.last_name}</Text>
+            <Text fontSize="sm">Age: {user?.age}</Text>
+            <Text fontSize="sm">Bio: {user?.bio}</Text>
             <IconButton aria-label="Edit Profile" icon={<EditIcon />} />
           </VStack>
         </HStack>
@@ -67,6 +71,7 @@ const UserProfilePage = () => {
         </VStack>
 
       </VStack>
+        </Center>
     </Box>
   );
 };

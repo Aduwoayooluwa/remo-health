@@ -1,8 +1,9 @@
 // pages/appointments.tsx
 import React, { useState } from 'react';
-import { Box, Tab, TabList, Tabs, TabPanels, TabPanel, Text, HStack } from '@chakra-ui/react';
+import { Box, Tab, TabList, Stack, Tabs, TabPanels, TabPanel, Text, HStack, Center } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import HamburgerMenu from './layout/Sidebar';
+import { useGetAppointments } from '@/helper/users';
 
 
 const approvedAppointments = [
@@ -16,10 +17,20 @@ const MotionBox = motion(Box);
 
 const AppointmentsPage = () => {
   const [tabIndex, setTabIndex] = useState(0);
+  const { pAppointments } = useGetAppointments();
+
 
   return (
-      <MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} bg="gray.50" minH="100vh">
-        <HStack bg="#5C7CFA" w="full" p={3}>
+     <Stack bg="#F5F7F8">
+      <Box display={{base: "none", md: "block"}} p={6} bg={"#5C7CFA"} w="full" textColor="white" h={"100px"}>
+          <HStack>
+                  <HamburgerMenu />
+                  <Text fontWeight={"bold"} fontSize={"xl"}>Settings</Text>       
+            </HStack> 
+      </Box>
+    <Center>
+      <MotionBox w={{base:"full", md: "90%"}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} bg="gray.50" minH="100vh">
+        <HStack display={{base:"flex", md: "none"}} bg="#5C7CFA" w="full" p={3}>
               <HamburgerMenu />
               <Text textColor="white" fontWeight={"bold"} fontSize="xl">All Appointments</Text>
         </HStack>
@@ -31,21 +42,28 @@ const AppointmentsPage = () => {
 
         <TabPanels>
           <TabPanel>
-            {approvedAppointments.map((appointment) => (
+            {pAppointments.map((appointment) => (
               <Box key={appointment.id} p={3} shadow="md" borderWidth="1px" borderRadius="md" bg="white" my={2}>
-                <Text fontWeight="bold" color="#5C7CFA">{appointment.patientName}</Text>
-                <Text color="gray.600">{appointment.date} at {appointment.time}</Text>
-                <Text fontSize="sm">Reason: {appointment.reason}</Text>
+                <Text fontWeight="bold" color="#5C7CFA">{appointment.reason}</Text>
+                <Text color="gray.600">{new Date(appointment.timeOfAppointment).toDateString()} at {new Date(appointment.timeOfAppointment).toLocaleTimeString()}</Text>
+                <Text fontSize="sm">{appointment.doctor_name}</Text>
               </Box>
             ))}
           </TabPanel>
           <TabPanel>
-            {/* Map through pending appointments */}
-            <Text>Pending Appointments List</Text>
+             {pAppointments.map((appointment) => (
+              <Box key={appointment.id} p={3} shadow="md" borderWidth="1px" borderRadius="md" bg="white" my={2}>
+                <Text fontWeight="bold" color="#5C7CFA">{appointment.reason}</Text>
+                <Text color="gray.600">{new Date(appointment.timeOfAppointment).toDateString()} at {new Date(appointment.timeOfAppointment).toLocaleTimeString()}</Text>
+                <Text fontSize="sm">{appointment.doctor_name}</Text>
+              </Box>
+            ))}
           </TabPanel>
         </TabPanels>
       </Tabs>
     </MotionBox>
+      </Center>
+      </Stack>
   );
 };
 

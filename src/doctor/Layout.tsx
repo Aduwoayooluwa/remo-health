@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Box, Flex, VStack, Link, useColorModeValue, Heading, Text, Stack, HStack, Divider } from '@chakra-ui/react';
 import { SettingIcon, CalendarIcon, MeterIcon, PersonIcon, LogoutIcon } from '@/assets';
 import Profile from "./Profile";
+import { useState, useEffect } from "react"
+import Loader from "@/app/loader";
 
 const doctorProfile = {
     name: 'Dr. Ayra Starr',
@@ -12,7 +14,22 @@ const doctorProfile = {
     newAppointments: 5,
 };
   
-const Layout = ({ children } : Readonly<{children: React.ReactNode}>) => {
+const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+  
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 4000)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
+
+  if (isLoading) return (<Loader />);
+
   return (
     <Flex w="full" overflow="hidden">
       <VStack position="relative" w="200px" align="start" h="100vh" p={5} bg={useColorModeValue('gray.100', 'gray.700')}>

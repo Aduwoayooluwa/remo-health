@@ -25,13 +25,6 @@ const ChatModal = ({ isOpen, onClose } : any) => {
     setMessage('');
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
-  };
-
   return (
     <Modal scrollBehavior='inside'size="full" isOpen={isOpen} onClose={onClose}>
           <MotionModalOverlay
