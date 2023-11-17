@@ -32,7 +32,7 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 
   return (
     <Flex w="full" overflow="hidden">
-      <VStack position="relative" w="200px" align="start" h="100vh" p={5} bg={useColorModeValue('gray.100', 'gray.700')}>
+      <VStack position="relative" w="200px" align="start" h="100vh" p={5} bg={"gray.100"}>
               <Stack  mb={10}>
                   <Heading as={"h4"} size="md">remo<span style={{ color: "#5C7CFA" }}>Health</span></Heading>
                 <Text textColor={"gray.500"} fontSize="xs">Remote Healthcare</Text>
@@ -73,7 +73,7 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             </HStack>
             {children}
           </Box>
-          <VStack w="300px" align="start" h="100vh" p={5} bg={useColorModeValue('gray.100', 'gray.700')}>
+          <VStack w="300px" align="start" h="100vh" p={5} bg={"gray.100"}>
                 <Text fontWeight="bold">Profile</Text>
 
               
