@@ -80,3 +80,11 @@ html {
 @keyframes l6 {
     100% {inset:0}
 }
+
+@media only screen and (max-width: 768px) {
+  .landing-page {
+    background-image: url("/bg_texture.png"), linear-gradient(to bottom, #fdf7ef, #fdf7ef);
+    background-size: auto, cover; 
+    background-repeat: repeat, no-repeat;
+}
+}

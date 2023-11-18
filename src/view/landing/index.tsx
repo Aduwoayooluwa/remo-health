@@ -1,12 +1,10 @@
-import { Center, Divider, Stack, Text, VStack } from '@chakra-ui/react'
+import { Center, Stack, VStack } from '@chakra-ui/react'
 import React from 'react'
-import Navbar from './pages/Navigation'
 import Hero from './containers/Hero'
 import Layout from './Layout'
 import Features from './containers/Features'
 import withScrollAnimation from './components/ScrollAnimation'
 import StepsSection from './containers/Stepper'
-import Footer from './containers/Footer'
 import OurOffer from './containers/OurOffer'
 import FAQSection from './containers/FAQ'
 import BannerScroll from './containers/BannerScroller'
@@ -23,7 +21,7 @@ const Page = () => {
       <VStack className='landing-page' flex="center" w="full" justify="center" minH={"100vh"}>
           <Center
                 zIndex={10}
-                backdropFilter="blur(10px)" 
+                backdropFilter={{base:0, md:"blur(10px)"}} 
                 minH="100vh"
                 w={{ base: "100%", md: "80%" }}
                 maxW={{ base: "100%", md: "80%" }}
