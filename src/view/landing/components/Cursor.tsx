@@ -24,8 +24,8 @@ const CustomCursor = () => {
   }, []);
 
   return (
-    <Box ref={cursorRef} pos="fixed" top="0" left="0" w="20px" h="20px"
-         bgColor="black" borderRadius="50%" zIndex="9999"
+    <Box ref={cursorRef} pos="fixed" top="0" left="0" w="30px" h="30px"
+         bgColor="#5C7CFA" borderRadius="50%" zIndex="9999"
          transform="translate(-50%, -50%)" pointerEvents="none" />
   );
 };
