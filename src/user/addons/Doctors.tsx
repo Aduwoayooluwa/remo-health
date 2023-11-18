@@ -32,9 +32,9 @@ export interface Doctor {
 const DoctorList: React.FC = () => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const { doctors } = useGetDoctors();
-  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
 
-  const handleDoctorClick = (doctor) => {
+  const handleDoctorClick = (doctor: any) => {
     setSelectedDoctor(doctor);
     onOpen();
   };

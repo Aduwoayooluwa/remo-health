@@ -2,9 +2,12 @@ import {create} from 'zustand';
 import Cookies from 'js-cookie';
 
 interface User {
-  id: string;
-  name: string;
-  email: string;
+  id?: string;
+  name?: string;
+  email?: string;
+  first_name?: string
+  last_name?: string
+  role?: string
 
 }
 
