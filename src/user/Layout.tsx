@@ -9,7 +9,7 @@ import Loader from '@/app/loader';
 
 type Props = {
     children: React.ReactNode
-    doctors: any[]
+    doctors?: any[]
 }
 const Layout = ({ children }: Readonly<Props>) => {
     const user = useUserStore((state) => state.user)
