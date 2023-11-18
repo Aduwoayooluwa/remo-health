@@ -21,7 +21,7 @@ const Page = () => {
       <VStack className='landing-page' flex="center" w="full" justify="center" minH={"100vh"}>
           <Center
                 zIndex={10}
-                backdropFilter={{base:0, md:"blur(10px)"}} 
+                backdropFilter={{base:"blur(0)", md:"blur(10px)"}} 
                 minH="100vh"
                 w={{ base: "100%", md: "80%" }}
                 maxW={{ base: "100%", md: "80%" }}
