@@ -20,7 +20,7 @@ export async function getAppointments(email: string) {
 
     return data;
 }
-export async function getDoctor(id: number) {
+export async function getDoctor(id: any) {
     const { data, error } = await supabase.from("user").select(id);
 
     return data;
