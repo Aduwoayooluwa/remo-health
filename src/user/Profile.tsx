@@ -35,9 +35,9 @@ const UserProfilePage = () => {
 
         {/* User Information */}
         <HStack spacing={4}>
-          <Avatar size="xl" name={user.first_name + " " + user.last_name} src={user.imageUrl} />
+          <Avatar size="xl" name={user?.first_name + " " + user?.last_name} src={user?.imageUrl} />
           <VStack align="start">
-            <Text fontWeight="bold" fontSize="xl">{user.first_name + " " + user.last_name}</Text>
+            <Text fontWeight="bold" fontSize="xl">{user?.first_name + " " + user?.last_name}</Text>
             <Text fontSize="sm">Age: {user?.age}</Text>
             <Text fontSize="sm">Bio: {user?.bio}</Text>
             <IconButton aria-label="Edit Profile" icon={<EditIcon />} />
