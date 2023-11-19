@@ -36,7 +36,7 @@ const Page = () => {
                             <AnimatedOffer />
                             <StepsSection />
                             <AnimatedFAQ />
-                           
+                            
                     </Stack>
               </VStack>
             </Center>

@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { Box, Flex, VStack, Link, useColorModeValue, Heading, Text, Stack, HStack, Divider } from '@chakra-ui/react';
+import { Box, Flex, useMediaQuery, VStack, Link, useColorModeValue, Heading, Text, Stack, HStack, Divider, Center } from '@chakra-ui/react';
 import { SettingIcon, CalendarIcon, MeterIcon, PersonIcon, LogoutIcon } from '@/assets';
 import Profile from "./Profile";
 import { useState, useEffect } from "react"
@@ -18,6 +18,8 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   
   const [isLoading, setIsLoading] = useState(true)
 
+  const [isMobileDevice] = useMediaQuery('(max-width: 1280px)');
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
@@ -27,6 +29,16 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
       clearTimeout(timer)
     }
   }, [])
+
+  if (isMobileDevice) return (
+    <Center px={10} h="100vh"  w="full">
+      <VStack>
+          <Image width={200} height={150} src={"/desktop.gif"} alt="desktop screen remoHealth" />
+         <Text textAlign="center">Kindly Switch to a Larger screen. Preferrably a desktop screen.</Text>
+      </VStack>
+      
+    </Center>
+  )
 
   if (isLoading) return (<Loader />);
 

@@ -16,7 +16,7 @@ export async function getUsers() {
     return allDoctors;
 }
 export async function getAppointments(email: string) {
-    const { data, error } = await supabase.from("appointments").select("*").eq("senderEmail", email);
+    const { data, error } = await supabase.from("appointments").select("*").eq("senderEmail", email).order('created_at', { ascending: true });
 
     return data;
 }

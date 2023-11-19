@@ -37,6 +37,19 @@ html {
   }
 }
 
+.other-scrollbar {
+  overflow-y: auto;
+  white-space: nowrap;
+  padding: 16px;
+  -ms-overflow-style: auto;
+  scrollbar-width: none; 
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+  }
+}
+
+
 
 /* For Webkit (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
