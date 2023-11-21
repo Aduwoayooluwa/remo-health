@@ -1,7 +1,7 @@
 import Layout from "./Layout";
 import PatientForm from "./PatientForm"
 import openAIRequest from "../../api"
-import { Heading } from "@chakra-ui/react"
+import { Heading, useToast } from "@chakra-ui/react"
 
 interface FormData {
     patientName: string;
@@ -10,6 +10,7 @@ interface FormData {
 
 
 export default function Home() {
+  const toast = useToast();
 
     const handleFormSubmit = async (data: FormData): Promise<void> => {
     try {
@@ -17,11 +18,19 @@ export default function Home() {
         prompt: `Patient name: ${data.patientName}\nSymptoms: ${data.symptoms}\nDiagnosis:`,
         max_tokens: 150,
         });
-        console.log(response.data.choices[0].text);
+      console.log(response.data.choices[0].text);
+      toast({
+        status: "success",
+        description: response.data.choices[0].text
+      })
+      
         // Handle the response (e.g., display it on the UI)
     } catch (error: any) {
         console.error('Error fetching diagnosis:', error);
-
+      toast({
+        status: "error",
+        description: "Error fetching diagnosis"
+      })
     }
     };
 
