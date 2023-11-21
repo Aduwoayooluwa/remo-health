@@ -8,7 +8,7 @@ import { linkAnimationVariants, menuVariants, sideBarVariants } from './utils,';
 
 const MotionFlex = motion(Flex);
 
-const Navbar = () => {
+const Navbar = ({title} : {title?: string}) => {
     const { scrollY } = useViewportScroll();
     const navbarAnim = useAnimation();
     const { isOpen, onToggle } = useDisclosure();
@@ -54,7 +54,7 @@ const Navbar = () => {
                 <Center w="full">
                     <Flex w={{base:"100%", md:"80%"}} align="center" justify="space-between">
                     <Stack>
-                        <Heading as={"h4"} size="md">remo<span style={{ color: "#5C7CFA" }}>Health</span></Heading>
+                        <Heading as={"h4"} size="md">remo<span style={{ color: "#5C7CFA" }}>Health</span> {title}</Heading>
                     </Stack>
                 {!isMobile ? (
                     <Flex align="center" textColor="black">
