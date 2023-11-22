@@ -17,8 +17,8 @@ export default function Home() {
 
        const handleFormSubmit = async (data: FormData) => {
         try {
-            const response = await openAIRequest.post('/v1/engines/ada/completions', {
-              prompt: `Act as a Senior Medical Professional with 50 years of experience, specializing in comprehensive diagnosis. Based on the following patient details, provide a detailed medical diagnosis and suggest potential treatment approaches.
+            const response = await openAIRequest.post('/v1/engines/davinci/completions', {
+              prompt: `Act a Senior Medical Professional with 50 years of experience, specializing in comprehensive diagnosis. Based on the following patient details, provide a detailed medical diagnosis and suggest potential treatment approaches.
                 Patient Name: ${data.patientName}
                 Symptoms: ${data.symptoms}
                 Detailed Diagnosis and Treatment Suggestions:`,

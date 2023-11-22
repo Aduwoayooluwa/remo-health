@@ -27,7 +27,7 @@ export const Chatbot = () => {
       <Center maxH="100vh" bg="#fdf7ef">
         <VStack bg="#fdf7ef" position="relative" h="100vh" w="container.md">
          
-          <Stack overflowY="auto" spacing={4}>
+          <Stack p={6} overflowY="auto" spacing={4}>
                {messages.map((message, index) => (
                  <Text key={index} alignSelf={message.sender === 'user' ? 'end' : 'start'}>
                    {message.content}
@@ -45,7 +45,7 @@ export const Chatbot = () => {
                 bg="#5C7CFA" 
                 color="white" 
                 _hover={{ bg: "blue.600" }} 
-                _focus={{ boxShadow: "0 0 0 3px rgba(92, 124, 250, 0.6)" }} // Focus styles
+                _focus={{ boxShadow: "0 0 0 3px rgba(92, 124, 250, 0.6)" }} 
                 my={5} onClick={sendMessage}
             >Send
             </Button>
