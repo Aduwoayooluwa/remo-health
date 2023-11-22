@@ -101,3 +101,8 @@ html {
     background-repeat: repeat, no-repeat;
 }
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
