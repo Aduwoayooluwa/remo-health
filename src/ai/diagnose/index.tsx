@@ -18,12 +18,15 @@ export default function Home() {
        const handleFormSubmit = async (data: FormData) => {
         try {
             const response = await openAIRequest.post('/v1/engines/ada/completions', {
-                prompt: `Patient name: ${data.patientName}\nSymptoms: ${data.symptoms}\nDiagnosis:`,
+              prompt: `Act as a Senior Medical Professional with 50 years of experience, specializing in comprehensive diagnosis. Based on the following patient details, provide a detailed medical diagnosis and suggest potential treatment approaches.
+                Patient Name: ${data.patientName}
+                Symptoms: ${data.symptoms}
+                Detailed Diagnosis and Treatment Suggestions:`,
                 max_tokens: 150,
             });
 
             setAiResponses(prevResponses => [...prevResponses, response.data.choices[0].text]);
-            // Handle the response (e.g., display it on the UI)
+            
         } catch (error: any) {
             console.error('Error fetching diagnosis:', error);
             toast({
