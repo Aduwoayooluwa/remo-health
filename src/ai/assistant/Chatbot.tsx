@@ -11,14 +11,24 @@ export const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentInput, setCurrentInput] = useState('');
 
+  const [isLoading, setIsLoading] = useState(false);
+
+
   const sendMessage = async () => {
     const userInput: Message = { sender: 'user', content: currentInput };
     setMessages([...messages, userInput]);
+    setIsLoading(true);
 
-    const response = await axios.post('/api/chat', { message: currentInput });
-    const botResponse: Message = { sender: 'bot', content: response.data.reply };
-    setMessages([...messages, userInput, botResponse]);
+    try {
+        const response = await axios.post('/api/chat', { message: currentInput });
+        const botResponse: Message = { sender: 'bot', content: response.data.reply };
+        setMessages(prevMessages => [...prevMessages, userInput, botResponse]);
+    } catch (error) {
+        console.error('Error sending message:', error);
+        
+    }
 
+    setIsLoading(false); 
     setCurrentInput('');
   };
 
@@ -32,7 +42,8 @@ export const Chatbot = () => {
                  <Text key={index} alignSelf={message.sender === 'user' ? 'end' : 'start'}>
                    {message.content}
                  </Text>
-                 ))}
+               ))}
+              {isLoading && <Text alignSelf="center">analyzing...</Text>}
             </Stack>
             <Stack position="absolute" bottom={0}  p="6" w={{base:"full", md:"full"}}  bg="#fdf7ef">
                     <Input 
@@ -46,7 +57,8 @@ export const Chatbot = () => {
                 color="white" 
                 _hover={{ bg: "blue.600" }} 
                 _focus={{ boxShadow: "0 0 0 3px rgba(92, 124, 250, 0.6)" }} 
-                my={5} onClick={sendMessage}
+              my={5} onClick={sendMessage}
+              isLoading={isLoading}
             >Send
             </Button>
            </Stack>   
