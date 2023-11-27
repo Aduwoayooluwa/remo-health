@@ -1,0 +1,133 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/app/globals.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+}
+
+.user-app {
+  scroll-behavior: smooth;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #5C7CFA orange; 
+}
+
+/* cursor lading page*/
+.cursor-chg {
+  cursor: url('/cursors/cursor_sm.png'), auto;
+}
+/* hero landing page */
+.hero-clip {
+  -webkit-clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+          clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+}
+.rhm-clip {
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.user-index {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 16px;
+  -ms-overflow-style: auto;
+  scrollbar-width: none; 
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+  }
+}
+
+.other-scrollbar {
+  overflow-y: auto;
+  white-space: nowrap;
+  padding: 16px;
+  -ms-overflow-style: auto;
+  scrollbar-width: none; 
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+  }
+}
+
+.chat-scroll {
+  -ms-overflow-style: auto;
+  scrollbar-width: none; 
+  &::-webkit-scrollbar {
+    width: 2px;
+
+  }
+}
+
+
+/* For Webkit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 15px; 
+}
+
+::-webkit-scrollbar-track {
+  background: orange; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #5C7CFA;
+  border-radius: 20px;
+}
+
+.landing-page {
+    background-image: url("/bg_texture.png"), linear-gradient(to bottom, #fdf7ef, #fdf7ef);
+    background-size: auto, cover; 
+    background-repeat: repeat, no-repeat; 
+    background-color: #fdf7ef;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 120px;
+  height: 22px;
+  border-radius: 20px;
+  color: #5C7CFA;
+  border: 2px solid;
+  position: relative;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  margin: 2px;
+  inset: 0 100% 0 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: l6 2s infinite;
+}
+@keyframes l6 {
+    100% {inset:0}
+}
+
+@media only screen and (max-width: 768px) {
+  .landing-page {
+    background-image: url("/bg_texture.png"), linear-gradient(to bottom, #fdf7ef, #fdf7ef);
+    background-size: auto, cover; 
+    background-repeat: repeat, no-repeat;
+}
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[12].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\utils\\theme.ts","import":"","arguments":[{"src":"fonts/tl_1.ttf"}],"variableName":"customFont"} ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__customFont_da29c2';
+src: url(/_next/static/media/002cf99d1cc0cc01-s.p.ttf) format('truetype');
+font-display: swap;
+}@font-face {font-family: '__customFont_Fallback_da29c2';src: local("Arial");ascent-override: 88.78%;descent-override: 26.34%;line-gap-override: 0.00%;size-adjust: 110.84%
+}.__className_da29c2 {font-family: '__customFont_da29c2', '__customFont_Fallback_da29c2'
+}
+

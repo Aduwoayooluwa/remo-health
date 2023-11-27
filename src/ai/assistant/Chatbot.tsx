@@ -1,6 +1,8 @@
-import { Box, Button, Input, Stack, Text, Heading, Center, VStack } from '@chakra-ui/react';
+import { Box, Button, Input, Stack, Text, Center, VStack, InputGroup, Textarea, InputLeftElement, Icon, InputRightElement } from '@chakra-ui/react';
 import { useState } from 'react';
 import axios from 'axios';
+import { GoArrowUp } from "react-icons/go";
+import AutoResizingTextarea from '@/components/ui/AutoSizeTextArea';
 
 interface Message {
   sender: 'user' | 'bot';
@@ -33,11 +35,15 @@ export const Chatbot = () => {
   };
 
   return(
-    <>
+    <Box overflow="hidden">
       <Center maxH="100vh" bg="#fdf7ef">
-        <VStack bg="#fdf7ef" position="relative" h="100vh" w="container.md">
+        <VStack pt={20} bg="#fdf7ef" position="relative" h="100vh" w="container.md">
+          <VStack pb={28} overflowY="auto" className='chat-scroll'>
+            <Stack px={6}>
+            <Text>Hello there. It&apos;s nice to meet you.  I am Riv, your AI Medical Personnel.</Text>
+          </Stack>
          
-          <Stack p={6} overflowY="auto" spacing={4}>
+          <Stack p={6}  spacing={4}>
                {messages.map((message, index) => (
                  <Text key={index} alignSelf={message.sender === 'user' ? 'end' : 'start'}>
                    {message.content}
@@ -45,26 +51,35 @@ export const Chatbot = () => {
                ))}
               {isLoading && <Text alignSelf="center">analyzing...</Text>}
             </Stack>
-            <Stack position="absolute" bottom={0}  p="6" w={{base:"full", md:"full"}}  bg="#fdf7ef">
-                    <Input 
-                    value={currentInput} 
-                    onChange={(e) => setCurrentInput(e.target.value)} 
-                    placeholder="Type your message here..." 
-               />
+            </VStack>
+            <Stack position="absolute" bottom={0}   p="6" w={{base:"full", md:"full"}}  bg="#fdf7ef">
+            
+            
+            <InputGroup position={"relative"} bg="white" size='md'>
 
-            <Button
-                bg="#5C7CFA" 
-                color="white" 
-                _hover={{ bg: "blue.600" }} 
-                _focus={{ boxShadow: "0 0 0 3px rgba(92, 124, 250, 0.6)" }} 
-              my={5} onClick={sendMessage}
-              isLoading={isLoading}
-            >Send
-            </Button>
+              <AutoResizingTextarea
+              
+                value={currentInput} 
+                onChange={(e) => setCurrentInput(e.target.value)} 
+                placeholder="Type your message here...">
+              </AutoResizingTextarea>
+              
+               
+              
+            </InputGroup>
+                <Button
+                  bg="#5C7CFA" 
+                  color="white" 
+                  _hover={{ bg: "blue.600" }} 
+                  _focus={{ boxShadow: "0 0 0 3px rgba(92, 124, 250, 0.6)" }}
+                  onClick={sendMessage}
+                  isLoading={isLoading}>
+                    Send
+                  </Button>
            </Stack>   
        </VStack>
       </Center>
     
-    </>
+    </Box>
   );
 };

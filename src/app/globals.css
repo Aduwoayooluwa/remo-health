@@ -49,6 +49,14 @@ html {
   }
 }
 
+.chat-scroll {
+  -ms-overflow-style: auto;
+  scrollbar-width: none; 
+  &::-webkit-scrollbar {
+    width: 2px;
+
+  }
+}
 
 
 /* For Webkit (Chrome, Safari, etc.) */
