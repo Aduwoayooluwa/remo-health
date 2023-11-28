@@ -1,15 +1,20 @@
+"use client"
 // pages/index.js or any other page
 import { Stack, Text, Box, VStack, Card, CardHeader, CardBody, Stat, StatLabel, StatNumber, StatHelpText, StatArrow, StatGroup } from "@chakra-ui/react";
 import Layout from "./Layout";
 import Image from "next/image";
 import StethoscopeImg from "@/assets/gifs/stethoscope.gif"
 import UserAppointments from "./addons/Users";
+import useUserStore from "@/lib/store";
 
 
 const HomePage = () => {
+    const { user } = useUserStore();
+    const fullName = user?.first_name + " " + user?.last_name;
+    
   return (
     <Layout>
-          <Text textColor="#5C7CFA" fontWeight={"bold"} fontSize="3xl">Welcome Mary! </Text>
+          <Text textColor="#5C7CFA" fontWeight={"bold"} fontSize="3xl">Welcome {fullName}! </Text>
           <Text w="600px" fontWeight={"light"} mt={2}>Welcome, Doctor! Your insights and expertise are vital to our community. Let&apos;s make a difference in our patients&apos; lives today.</Text>
           
           <Stack position="relative" h="full">

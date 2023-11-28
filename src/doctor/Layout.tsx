@@ -18,7 +18,7 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   
   const [isLoading, setIsLoading] = useState(true)
 
-  const [isMobileDevice] = useMediaQuery('(max-width: 1280px)');
+  const [isMobileDevice] = useMediaQuery('(max-width: 728px)');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -50,7 +50,8 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                 <Text textColor={"gray.500"} fontSize="xs">Remote Healthcare</Text>
               </Stack>
               
-              <Divider w="150px" color={"gray.700"} orientation="horizontal"/>
+              <Divider w="150px" color={"gray.700"
+            } orientation="horizontal"/>
               
               <Link textColor="gray.500" display={"flex"} my={5} href="/">
                 <Image src={MeterIcon} width={25} height={20} alt="meter icon" />

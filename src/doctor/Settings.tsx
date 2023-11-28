@@ -5,6 +5,7 @@ import { Box, Input, Switch, Text, Button, Avatar, FormControl, FormLabel, useTo
 import { motion } from 'framer-motion';
 import Layout from './Layout';
 import FundsCard from './addons/FundsCard';
+import useUserStore from '@/lib/store';
 
 // types.ts
 export interface DoctorSettings {
@@ -20,9 +21,9 @@ const MotionBox = motion(Box);
 const SettingsPage: React.FC = () => {
   const [settings, setSettings] = useState<any>({});
   const toast = useToast();
+  const { user } = useUserStore();
 
   const handleSave = () => {
-   
     toast({ title: "Settings updated.", status: "success", duration: 3000, isClosable: true });
   };
 
@@ -31,7 +32,7 @@ const SettingsPage: React.FC = () => {
         <MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
         <FormControl id="name">
             <FormLabel  w={"300px"}>Name</FormLabel>
-                <Input value={"Ayarr Starr"} disabled  />                    
+                <Input value={user?.first_name + " " + user?.last_name} isReadOnly={true}  />                    
         </FormControl>
                 
         <FormControl mt={5}  w="300px" display="flex" alignItems="center">

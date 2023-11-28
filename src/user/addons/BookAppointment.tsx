@@ -3,7 +3,7 @@ import { Drawer, DrawerBody, DrawerOverlay, DrawerContent, Input, Button, useDis
 import { createUserAppointment } from '@/helper';
 import useUserStore from '@/lib/store';
 
-const BookAppointment = ({ doctorId, doctorName }: Readonly<{doctorId: string, doctorName: string}>) => {
+const BookAppointment = ({ doctorId, doctorName, doctorEmail }: Readonly<{doctorId: string, doctorName: string, doctorEmail: string}>) => {
   const user = useUserStore((state) => state.user)
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
@@ -25,7 +25,8 @@ const BookAppointment = ({ doctorId, doctorName }: Readonly<{doctorId: string, d
     timeOfAppointment: appointment.date,
     isApproved: false,
     doctor_name: doctorName,
-    senderEmail: user.email
+    senderEmail: user.email,
+    doctorEmail
   }
 
   const handleSubmit = (e: any) => {

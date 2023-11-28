@@ -1,5 +1,7 @@
 import React from 'react';
 import { Box, List, ListItem, Avatar, Text, HStack, Stack, VStack, Divider } from '@chakra-ui/react';
+import { getFormattedTime } from '@/utils/utils';
+import { useGetAppointments } from '../helper';
 
 const users = [
   { name: 'John Doe', avatarUrl: 'https://bit.ly/dan-abramov', cancelled: false, tag: "consultation" },
@@ -12,18 +14,20 @@ const users = [
 
 
 const UserAppointments = () => {
+  const { allAppointments } = useGetAppointments();
+
   return (
     <Box w={"300px"} >
       <List spacing={4}>
-        {users.map((user, index) => (
-          <ListItem key={index} >
+        {allAppointments.map((user, index) => (
+          <ListItem pt="6" key={user?.id} >
                 <HStack justify={"space-between"}>
                         <HStack>
-                        <Avatar size={"sm"} name={user.name} src={user.avatarUrl} />
+                        <Avatar size={"sm"} name={user?.patient_name} src={user?.avatarUrl} />
                             
                             <Stack >
-                                <Text fontWeight={"bold"}>{user.name}</Text>
-                            <Text mt={-2} fontSize={"sm"}  textColor="gray.500">{user.tag.toUpperCase()}</Text>
+                                <Text fontWeight={"bold"}>{user?.patient_name}</Text>
+                            <Text mt={-2} fontSize={"sm"}  textColor="gray.500">{user?.tag?.toUpperCase()}</Text>
                             </Stack>
                                 
                         </HStack>
@@ -38,7 +42,7 @@ const UserAppointments = () => {
                                 <Text fontSize={"sm"} textColor="white">✔</Text>
                             </Stack>)
                         }</Box>
-                        <Text fontWeight={"bold"} fontSize={"lg"}>8:00pm</Text>
+                        <Text fontWeight={"bold"} fontSize={"lg"}>{getFormattedTime(user?.timeOfAppointment)}</Text>
                 </HStack>
                 </HStack>
 

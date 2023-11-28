@@ -4,15 +4,17 @@ import { useEffect } from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Checkbox, Input } from '@chakra-ui/react';
 import { motion, useAnimation } from 'framer-motion';
 import Layout from './Layout';
+import { useGetAppointments } from './helper';
+import { getFormattedTime } from '@/utils/utils';
 
 const MotionBox = motion(Box);
 
-interface AppointmentsProps {
-  appointments: any[];
-}
+const MotionTr = motion(Tr)
 
-const Appointments: React.FC<AppointmentsProps> = ({ appointments }) => {
+const Appointments= () => {
   const controls = useAnimation();
+  const { allAppointments } = useGetAppointments();
+
 
   useEffect(() => {
     controls.start({
@@ -22,11 +24,12 @@ const Appointments: React.FC<AppointmentsProps> = ({ appointments }) => {
   }, [controls]);
 
   return (
-      <Layout>
-          <MotionBox initial={{ opacity: 0 }} animate={controls}>
-              <Input w="300px"
+    <Layout>
+
+          <Input w="300px"
               placeholder='Search for Appointment'
-              />
+         />
+
       <Table mt={10} variant="simple">
         <Thead>
             <Tr>
@@ -38,19 +41,22 @@ const Appointments: React.FC<AppointmentsProps> = ({ appointments }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {appointments.map((appointment) => (
+          {allAppointments.map((appointment) => (
             
-              <Tr key={appointment.id}>
+            <MotionTr
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              key={appointment.id}>
                <Td><Checkbox /></Td>   
-              <Td>{appointment.patientName}</Td>
-              <Td>{appointment.date}</Td>
-              <Td>{appointment.time}</Td>
-              <Td>{appointment.reason}</Td>
-            </Tr>
+              <Td>{appointment?.patient_name}</Td>
+              <Td>{new Date(appointment?.timeOfAppointment).toLocaleDateString()}</Td>
+              <Td>{getFormattedTime(appointment?.timeOfAppointment)}</Td>
+              <Td>{appointment?.reason}</Td>
+            </MotionTr>
           ))}
         </Tbody>
       </Table>
-    </MotionBox>
     </Layout>
   );
 };

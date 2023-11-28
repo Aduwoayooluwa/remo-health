@@ -1,3 +1,14 @@
+export const getFormattedTime = (d: any) => {
+    let date = new Date(d);
+    let formattedTime = date.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
+
+    return formattedTime;
+}
+
 export const patients = [
     {
         id: 1,

@@ -21,7 +21,7 @@ const DoctorProfile = ({ doctor, isOpen, onOpen, onClose }: any) => {
               <Badge w="80px" colorScheme={true ? 'green' : 'red'}>{true ? 'Online' : 'Offline'}</Badge>
               <Text fontSize="sm">Rating: {doctor.rating}</Text>
               <HStack my={5}>
-                <BookAppointment doctorName={`${doctor.first_name} ${doctor.last_name}`} doctorId={doctor.id} />
+                <BookAppointment doctorEmail={doctor?.email} doctorName={`${doctor.first_name} ${doctor.last_name}`} doctorId={doctor.id} />
                 <Button leftIcon={<PhoneIcon />} colorScheme="teal" ml={3}>Call</Button>
               </HStack>
               <Text fontSize="sm" lineHeight={"20px"}>{doctor.bio}</Text> 

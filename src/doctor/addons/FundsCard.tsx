@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Text, Button, Stat, StatLabel, StatNumber, StatGroup, HStack } from '@chakra-ui/react';
 
 const FundsCard: React.FC = () => {
-  const availableFunds = 1200; // This should be fetched from a state or props
+  const availableFunds = 1200; 
 
   return (
     <Box p={5} shadow="sm" w="500px" borderWidth="1px" borderRadius="md">

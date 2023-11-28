@@ -1,7 +1,8 @@
-import { Box, Flex, IconButton, Link, Button, useBreakpointValue, useDisclosure, Heading, Stack, Center } from '@chakra-ui/react';
+import { Box, Flex, IconButton, Link, Button, useBreakpointValue, useDisclosure, Heading, Stack, Center, MenuButton, MenuList, MenuItem, Menu } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { useEffect } from 'react';
+import { ChevronDownIcon } from "@chakra-ui/icons"
 import { useViewportScroll, useTransform } from 'framer-motion';
 import { gsap } from 'gsap';
 import { linkAnimationVariants, menuVariants, sideBarVariants } from './utils,';
@@ -59,7 +60,19 @@ const Navbar = ({title} : {title?: string}) => {
                 {!isMobile ? (
                     <Flex align="center" textColor="black">
                         <Link  className="link" mr={6} opacity={1}>Services</Link>
-                        <Link className="link" mr={6} opacity={1}>Resources</Link>
+                                {/* <Link className="link" >Resources</Link> */}
+                        <Box mr={6}  className="link" opacity={1}>
+                            <Menu >
+                                <MenuButton as={Button} bgColor={"transparent"} cursor="pointer" rightIcon={<ChevronDownIcon />}>
+                                    Resources
+                                </MenuButton>
+                                <MenuList>
+                                    <MenuItem><Link href="/ai/assistant">AI Doctor</Link></MenuItem>
+                                    <MenuItem><Link href="/ai/diagnose">AI Diagnostic Tool</Link></MenuItem>
+                                </MenuList>
+                            </Menu>  
+                        </Box>
+                        
                         <Link className="link" mr={6} opacity={1}>Get Doctors</Link>
                         <Link className="link" mr={6} opacity={1}>Contact</Link>
                         <Button
@@ -114,14 +127,7 @@ const Navbar = ({title} : {title?: string}) => {
                                     {"Services"}
                                 </motion.p>
                                 </Link>
-                            <Link my={5}  className="link" mb={2}>
-                                    <motion.p
-                                        whileHover={{ scale: 1.1 }}
-                                        variants={linkAnimationVariants}
-                                        className="text-center hover:underline text-sm">
-                                        {"Resources"}
-                                    </motion.p>
-                                </Link>
+                            
                             <Link my={5} className="link" mb={2}>
                                  <motion.p
                                     whileHover={{ scale: 1.1 }}
@@ -138,6 +144,25 @@ const Navbar = ({title} : {title?: string}) => {
                                     {"Contact"}
                                 </motion.p>
                                 </Link>
+
+                                <Box my={3}  opacity={1}>
+                                <Menu >
+                                    <MenuButton bg="white"  className="link" textAlign="start" as={Button} rightIcon={<ChevronDownIcon />}>
+                                       <motion.p
+                                        whileHover={{ scale: 1.1 }}
+                                        variants={linkAnimationVariants}
+                                        className="text-center hover:underline text-sm">
+                                        {"Resources"}
+                                    </motion.p>
+                                    </MenuButton>
+                                    <MenuList>
+                                        <MenuItem><Link href="/ai/assistant">AI Doctor</Link></MenuItem>
+                                        <MenuItem><Link href="/ai/diagnose">AI Diagnostic Tool</Link></MenuItem>
+                                    </MenuList>
+                                </Menu>  
+                            </Box>
+                        
+                                
                                 <Button
                                 bg="#5C7CFA" 
                                 color="white" 

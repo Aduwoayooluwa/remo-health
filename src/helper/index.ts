@@ -3,7 +3,6 @@ import { supabase } from "@/lib/supabase"
 import { useToast } from "@chakra-ui/react"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { getUsers } from "./users";
 
 export async function addUser(userData: any) {
     const { first_name, last_name, role, email } = userData;
@@ -167,7 +166,7 @@ export function useAuth() {
 
             // redirect patient to patient page and doctor to doctor's dashboard. 
             if (role === "doctor") {
-                push("/dashboard")
+                push("/doctor")
             }
             else {
                 push("/user")

@@ -11,8 +11,6 @@ export interface Patient {
   lastVisit: string;
 }
 
-// import { Patient } from './interfaces';
-
 const MotionTr = motion(Tr);
 
 const Patients: React.FC<{ patients: Patient[] }> = ({ patients }) => {

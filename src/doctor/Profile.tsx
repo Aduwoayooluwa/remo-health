@@ -3,16 +3,20 @@ import React from 'react';
 import { Box, VStack, Avatar, Text, Badge, Stack, Icon, HStack, Button, AlertIcon, Alert, AlertDescription } from '@chakra-ui/react';
 import CalendarComponent from './addons/Calendar';
 import Link from 'next/link';
+import useUserStore from '@/lib/store';
 
 interface ProfileProps {
   doctorProfile: any;
 }
 
 const Profile: React.FC<ProfileProps> = ({ doctorProfile }) => {
+  const { user } = useUserStore();
+  const fullName = user?.first_name + " " + user?.last_name;
+
   return (
     <VStack align="center" spacing={4} p={5} borderLeft="1px" w="full" borderColor="gray.200">
-      <Avatar size="xl" name={doctorProfile.name} src={doctorProfile.imageUrl} />
-      <Text fontWeight="bold">{doctorProfile.name}</Text>
+      <Avatar size="xl" name={fullName} src={doctorProfile.imageUrl} />
+      <Text fontWeight="bold">{fullName}</Text>
     
       
           <HStack justify="space-around" w="full">
@@ -23,7 +27,7 @@ const Profile: React.FC<ProfileProps> = ({ doctorProfile }) => {
 
               <Stack>
                   <Text  textColor="gray.500" fontWeight="bold" fontSize="lg">Rating</Text>
-                  <Badge size="lg" colorScheme="green" p={1}>{`${doctorProfile.rating} Stars`}</Badge>
+                  <Badge size="lg" colorScheme="green" p={1}>{`${user?.rating} Stars`}</Badge>
                </Stack>             
         </HStack>
 

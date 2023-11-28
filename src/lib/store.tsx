@@ -8,7 +8,7 @@ interface User {
   first_name?: string
   last_name?: string
   role?: string
-
+  doctorInfo?: any
 }
 
 interface UserStoreState {
