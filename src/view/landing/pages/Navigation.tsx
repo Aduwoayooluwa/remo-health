@@ -79,7 +79,7 @@ const Navbar = ({title} : {title?: string}) => {
                         bg="#5C7CFA" 
                         color="white" 
                         _hover={{ bg: "blue.600" }} 
-                        _focus={{ boxShadow: "0 0 0 3px rgba(92, 124, 250, 0.6)" }} // Focus styles
+                        _focus={{ boxShadow: "0 0 0 3px rgba(92, 124, 250, 0.6)" }}
                         w="200px" 
                         >
                         <Link href="/login">Book Appointment</Link>

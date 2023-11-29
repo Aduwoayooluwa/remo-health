@@ -20,6 +20,8 @@ export async function getAppointments(doctorId: string) {
 
     return data;
 }
+
+
 export async function getDoctor(id: any) {
     const { data, error } = await supabase.from("user").select(id);
 

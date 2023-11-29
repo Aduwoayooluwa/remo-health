@@ -3,6 +3,7 @@ import { Table, Thead, Tbody, Tr, Th, Td, Stack, Input, Checkbox } from '@chakra
 import { motion } from 'framer-motion';
 import { useState } from "react";
 import Layout from './Layout';
+
 // interfaces.ts
 export interface Patient {
   id: number;
@@ -14,7 +15,7 @@ export interface Patient {
 const MotionTr = motion(Tr);
 
 const Patients: React.FC<{ patients: Patient[] }> = ({ patients }) => {
-     const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPatients = patients.filter(patient =>
     patient.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -29,7 +30,7 @@ const Patients: React.FC<{ patients: Patient[] }> = ({ patients }) => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                         mb={4}
                         w="300px"
-            />
+                />
             {/* Add Filter UI here */}
             <Table variant="simple">
                 <Thead>

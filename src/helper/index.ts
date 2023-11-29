@@ -1,6 +1,7 @@
 import useUserStore from "@/lib/store";
 import { supabase } from "@/lib/supabase"
 import { useToast } from "@chakra-ui/react"
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -20,6 +21,21 @@ export async function addUser(userData: any) {
             },
         );
     return data;
+}
+
+export async function generateToken(payload: { channelName: string, uid: string }) {
+    const { channelName, uid } = payload;
+
+    try {
+        const response = await axios.post("/api/video-token", {
+            channelName, uid
+        });
+
+        return response.data?.token
+    }
+    catch (error) {
+
+    }
 }
 
 export async function createUserAppointment(payload: any) {

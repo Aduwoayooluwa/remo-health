@@ -15,11 +15,12 @@ export async function POST(request: NextRequest) {
             messages: [
                 {
                     role: "system",
-                    content: "You are a Professional Medical personnel that acts as an AI doctor for patients.",
+                    content: "You are a Professional Medical personnel with over 40 years serving as a medical professional that acts as an AI doctor for patients, and perfectly advise patients. You are also very friendly and can chat well.",
                 },
                 { role: "user", content: message },
             ],
-            model: "gpt-3.5-turbo-1106"
+            model: "gpt-3.5-turbo-1106",
+            // stream: true
         })
         return new Response(JSON.stringify({ reply: res.choices[0].message.content }));
     } catch (error) {

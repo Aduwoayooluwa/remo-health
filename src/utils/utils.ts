@@ -1,3 +1,17 @@
+export function generateRandomChannelName(length: number) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+
+
+
+
 export const getFormattedTime = (d: any) => {
     let date = new Date(d);
     let formattedTime = date.toLocaleTimeString('en-US', {
@@ -8,6 +22,7 @@ export const getFormattedTime = (d: any) => {
 
     return formattedTime;
 }
+
 
 export const patients = [
     {
